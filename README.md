@@ -82,6 +82,9 @@ uv build
 
 ```text
 python-project/
+├── data/
+│   └── raw/
+│       └── .gitkeep
 ├── src/
 │   └── python_project/
 │       ├── __init__.py
@@ -95,3 +98,15 @@ python-project/
 
 在 `src/python_project/` 中添加项目代码，使用 `uv add` 管理依赖。
 详细说明见 [uv 项目指南](https://docs.astral.sh/uv/guides/projects/)。
+
+## 数据集
+
+原始数据放在项目根目录下的 `data/raw/`。请将数据集中的以下文件上传到这个目录：
+
+- `train.csv`
+- `validation.csv`
+- `test.csv`
+- `README.txt`（数据集说明）
+
+`.gitkeep` 用于让 Git 保留目录，不影响数据读取。
+保留原始数据；后续处理后的数据可另存到 `data/processed/`。
