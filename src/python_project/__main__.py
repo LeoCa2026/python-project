@@ -37,41 +37,41 @@ def save_results(path: Path, payload: dict) -> None:
 
 def save_report(path: Path, payload: dict) -> None:
     """Write a readable summary alongside the machine-readable results."""
-    labels = {0: "�����ʼ�", 1: "�����ʼ�", None: "����ʧ��"}
+    labels = {0: "正常邮件", 1: "钓鱼邮件", None: "分析失败"}
     summary = payload["summary"]
     quote_count = sum(len(item.get("evidence", [])) for item in payload["results"])
     invalid_quote_count = summary["invalid_evidence_quotes"]
     lines = [
-        "# �����ʼ�ʶ����", "",
-        f"ģ�ͣ�{payload['model']}", "",
-        f"�ɹ����� {summary['successful']}/{payload['total_records']} ����"
-        f"�����ݼ���ǩһ�� {summary['correct']} ����", "",
-        f"ԭ�����ù� {quote_count} ����"
-        f"���� {invalid_quote_count} ��δͨ������ƥ���顣", "",
-        "δͨ���������ò�����Ϊ����֤ԭ��֤�ݣ������漰���С���д����졣", "",
-        "���ó�����ԭ���У�Ҳ������������֧��ģ�͵��жϡ�", "",
-        "��Щ�ʼ��������ܣ����ܾݴ��ƶ���ʽ���Լ��ϵ�Ч����", "",
-        "| ��� | ���� | ģ���ж� | ���ݼ���ǩ | �Ƿ�һ�� |",
+        "# 本地邮件识别结果", "",
+        f"模型：{payload['model']}", "",
+        f"成功分析 {summary['successful']}/{payload['total_records']} 条；"
+        f"与数据集标签一致 {summary['correct']} 条。", "",
+        f"原文引用共 {quote_count} 条；"
+        f"其中 {invalid_quote_count} 条未通过逐字匹配检查。", "",
+        "未通过检查的引用不能作为已验证原文证据；可能涉及换行、改写或编造。", "",
+        "引用出现在原文中，也不代表它足以支持模型的判断。", "",
+        "这些邮件用于试跑，不能据此推断正式测试集上的效果。", "",
+        "| 序号 | 主题 | 模型判断 | 数据集标签 | 是否一致 |",
         "| --- | --- | --- | --- | --- |",
     ]
     for item in payload["results"]:
         subject = item["subject"].replace("|", "&#124;").replace("\n", " ")
-        match = "��" if item["correct"] is True else "��" if item["correct"] is False else "ʧ��"
+        match = "是" if item["correct"] is True else "否" if item["correct"] is False else "失败"
         lines.append(
             f"| {item['row']} | {subject} | {labels[item['predicted_label']]} | "
             f"{labels[item['true_label']]} | {match} |"
         )
     for item in payload["results"]:
-        lines.extend(["", f"## �� {item['row']} ��", ""])
+        lines.extend(["", f"## 第 {item['row']} 条", ""])
         if item["status"] != "ok":
-            lines.append("����ʧ�ܣ�" + item["error"])
+            lines.append("分析失败：" + item["error"])
             continue
-        lines.extend(["�жϣ�" + labels[item["predicted_label"]], "", "���ɣ�" + item["reason"], ""])
+        lines.extend(["判断：" + labels[item["predicted_label"]], "", "理由：" + item["reason"], ""])
         if not item["evidence"]:
-            lines.append("ģ��û���ṩԭ�����á�")
+            lines.append("模型没有提供原文引用。")
         for quote in item["evidence"]:
-            found = "����ԭ���������ҵ�" if quote["found_in_email"] else "δ����ԭ���������ҵ�"
-            lines.extend(["ԭ��֤�ݣ�" + found + "����", ""])
+            found = "能在原文中逐字找到" if quote["found_in_email"] else "未能在原文中逐字找到"
+            lines.extend(["原文证据（" + found + "）：", ""])
             lines.extend("    " + line for line in quote["quote"].splitlines())
             lines.append("")
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -79,8 +79,8 @@ def save_report(path: Path, payload: dict) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Analyze CSV emails with local Ollama.")
-    parser.add_argument("--input", type=Path, default=PROJECT_ROOT / "data/raw/train2.csv")
-    parser.add_argument("--output", type=Path, default=PROJECT_ROOT / "outputs/train2_results.json")
+    parser.add_argument("--input", type=Path, default=PROJECT_ROOT / "data/raw/train.csv")
+    parser.add_argument("--output", type=Path, default=PROJECT_ROOT / "outputs/train_results.json")
     parser.add_argument("--model", default="qwen3:1.7b")
     args = parser.parse_args()
     if args.output.resolve() == args.input.resolve():

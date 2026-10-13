@@ -22,7 +22,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ## 快速开始
 
-仓库已包含试跑数据 `data/raw/train2.csv`（100 条记录），下载或克隆后可直接用于运行。完整的 `train.csv` 未上传。
+程序默认分析完整的 `data/raw/train.csv`。该文件未上传到 GitHub，下载或克隆代码后，需要先从原电脑复制到这个位置。仓库包含 `train2.csv`（100 条记录），可以用 `--input` 指定它进行小规模试跑。
 
 ```bash
 git clone https://github.com/LeoCa2026/python-project.git
@@ -31,7 +31,7 @@ uv sync --locked
 uv run --locked python-project
 ```
 
-运行前保持 Ollama 运行，并安装 `qwen3:1.7b`。程序默认使用这个模型，读取 `data/raw/train2.csv`，逐条显示识别进度，将结果保存到 `outputs/train2_results.json`，并生成易读的 `outputs/train2_results.md` 报告。
+运行前保持 Ollama 运行，并安装 `qwen3:1.7b`。程序默认使用这个模型，读取 `data/raw/train.csv`，逐条显示识别进度，将结果保存到 `outputs/train_results.json`，并生成易读的 `outputs/train_results.md` 报告。
 
 也可以按模块运行：
 
@@ -112,12 +112,12 @@ python-project/
 数据放在项目根目录下的 `data/raw/`。仓库已包含：
 
 - `train1.csv`（前 10 条训练集记录）
-- `train2.csv`（前 100 条训练集记录，程序默认输入）
+- `train2.csv`（前 100 条训练集记录，可指定用于试跑）
 - `validation.csv`
 - `test.csv`
 - `README.txt`（数据集说明）
 
-完整的 `train.csv` 仅保留在本地，未上传到 GitHub。
+完整的 `train.csv` 是程序的默认输入，仅保留在本地，未上传到 GitHub。运行默认命令前请将它放入 `data/raw/`。
 
 `.gitkeep` 用于让 Git 保留目录，不影响数据读取。
 保留原始数据；后续处理后的数据可另存到 `data/processed/`。
@@ -132,7 +132,7 @@ python-project/
 uv run --locked python-project
 ```
 
-也可以指定输入、输出和模型：
+也可以指定输入、输出和模型，用 100 条数据进行试跑：
 
 ```powershell
 uv run --locked python-project --input data/raw/train2.csv --output outputs/train2_results.json --model qwen3:1.7b
@@ -142,7 +142,7 @@ uv run --locked python-project --input data/raw/train2.csv --output outputs/trai
 
 ## 在安装 4B Instruct 模型的新电脑上运行
 
-将数据文件放好，并保持本机 Ollama 运行。进入包含 `pyproject.toml` 的项目目录后执行：
+先把完整版 `train.csv` 放入 `data/raw/`，并保持本机 Ollama 运行。进入包含 `pyproject.toml` 的项目目录后执行：
 
 ```powershell
 uv sync --locked
