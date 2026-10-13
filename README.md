@@ -1,112 +1,146 @@
 # python-project
 
-一个使用 uv 管理 Python 版本、虚拟环境和依赖的基础项目。
+һ��ʹ�� uv ����������ͨ������ Ollama ���� Qwen �жϵ����ʼ��� Python ��Ŀ��
 
-## 安装 uv
+## ��װ uv
 
-Windows PowerShell：
+Windows PowerShell��
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-macOS / Linux：
+macOS / Linux��
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-安装后重新打开终端，并运行 `uv --version` 检查。
+��װ�����´��նˣ������� `uv --version` ��顣
 
-官方文档：[安装 uv](https://docs.astral.sh/uv/getting-started/installation/)。
+�ٷ��ĵ���[��װ uv](https://docs.astral.sh/uv/getting-started/installation/)��
 
-## 快速开始
+## ���ٿ�ʼ
+
+���ش�����Ƚ��������� `train2.csv` ���� `data/raw/`�������ļ�����׼��������ֿ�Ŀǰֻ�и�Ŀ¼��ռλ�ļ���
 
 ```bash
 git clone https://github.com/LeoCa2026/python-project.git
 cd python-project
 uv sync --locked
-uv run --locked python-project --name Leo
+uv run --locked python-project
 ```
 
-预期输出：`Hello, Leo!`
+����ǰ���� Ollama ���У�����װ `qwen3:1.7b`������Ĭ��ʹ�����ģ�ͣ���ȡ `data/raw/train2.csv`��������ʾʶ����ȣ���������浽 `outputs/train2_results.json`���������׶��� `outputs/train2_results.md` ���档
 
-也可以按模块运行：
+Ҳ���԰�ģ�����У�
 
 ```bash
-uv run --locked python -m python_project --name Leo
+uv run --locked python -m python_project
 ```
 
-项目默认使用 Python 3.11.17，由 `.python-version` 指定；缺少合适的 Python 时，uv 会自动下载。
-`uv sync` 会创建 `.venv` 并安装项目，无需手动激活虚拟环境。
+��ĿĬ��ʹ�� Python 3.11.17���� `.python-version` ָ����ȱ�ٺ��ʵ� Python ʱ��uv ���Զ����ء�
+`uv sync` �ᴴ�� `.venv` ����װ��Ŀ�������ֶ��������⻷����
 
-## 管理依赖
+## ��������
 
-添加运行依赖（示例）：
+��������������ʾ������
 
 ```bash
 uv add requests
 ```
 
-添加开发依赖（示例）：
+���ӿ���������ʾ������
 
 ```bash
 uv add --dev pytest
 ```
 
-移除依赖：
+�Ƴ�������
 
 ```bash
 uv remove requests
 ```
 
-更新指定依赖：
+����ָ��������
 
 ```bash
 uv lock --upgrade-package requests
 uv sync --locked
 ```
 
-添加或更新依赖后，将 `pyproject.toml` 和 `uv.lock` 一起提交。
-`uv.lock` 由 uv 自动生成和维护，请勿手动编辑；`.venv` 不提交到 Git。
+���ӻ���������󣬽� `pyproject.toml` �� `uv.lock` һ���ύ��
+`uv.lock` �� uv �Զ����ɺ�ά���������ֶ��༭��`.venv` ���ύ�� Git��
 
-## 构建项目
+## ������Ŀ
 
 ```bash
 uv build
 ```
 
-构建文件输出到 `dist/`。
+�����ļ������ `dist/`��
 
-## 项目结构
+## ��Ŀ�ṹ
 
 ```text
 python-project/
-├── data/
-│   └── raw/
-│       └── .gitkeep
-├── src/
-│   └── python_project/
-│       ├── __init__.py
-│       └── __main__.py
-├── .gitignore
-├── .python-version
-├── pyproject.toml
-├── uv.lock
-└── README.md
+������ data/
+��   ������ raw/
+��       ������ .gitkeep
+������ src/
+��   ������ python_project/
+��       ������ __init__.py
+��       ������ detector.py
+��       ������ __main__.py
+������ .gitignore
+������ .python-version
+������ pyproject.toml
+������ uv.lock
+������ README.md
 ```
 
-在 `src/python_project/` 中添加项目代码，使用 `uv add` 管理依赖。
-详细说明见 [uv 项目指南](https://docs.astral.sh/uv/guides/projects/)。
+�� `src/python_project/` ��������Ŀ���룬ʹ�� `uv add` ����������
+��ϸ˵���� [uv ��Ŀָ��](https://docs.astral.sh/uv/guides/projects/)��
 
-## 数据集
+## ���ݼ�
 
-原始数据放在项目根目录下的 `data/raw/`。请将数据集中的以下文件上传到这个目录：
+ԭʼ���ݷ�����Ŀ��Ŀ¼�µ� `data/raw/`���뽫���ݼ��е������ļ��ϴ������Ŀ¼��
 
 - `train.csv`
 - `validation.csv`
 - `test.csv`
-- `README.txt`（数据集说明）
+- `README.txt`�����ݼ�˵����
 
-`.gitkeep` 用于让 Git 保留目录，不影响数据读取。
-保留原始数据；后续处理后的数据可另存到 `data/processed/`。
+`.gitkeep` ������ Git ����Ŀ¼����Ӱ�����ݶ�ȡ��
+����ԭʼ���ݣ���������������ݿ����浽 `data/processed/`��
+
+## �����ʼ�ʶ������
+
+`detector.py` ֻ�� `email_text` ��������ģ�ͣ�`label` ֻ���ں˶Խ����ģ������жϣ�0=������1=���㣩���������ɺ�ԭ�����á������������Ƿ����ֳ����������ʼ��У������鲻����֤��һ����֧���жϡ�
+
+Ĭ�����У�
+
+```powershell
+uv run --locked python-project
+```
+
+Ҳ����ָ�����롢�����ģ�ͣ�
+
+```powershell
+uv run --locked python-project --input data/raw/train2.csv --output outputs/train2_results.json --model qwen3:1.7b
+```
+
+���ÿ������һ���ͱ���һ�Ρ���������ʧ�ܻ���ȷ��¼Ϊ���󣬲��ܵ��������ʼ�����ǰ���ص� `train2.csv` ����ǰ 100 ��ѵ�������ݣ��������ܣ���������ʽ����Ч����
+
+## �ڰ�װ 4B Instruct ģ�͵��µ���������
+
+�������ļ��źã������ֱ��� Ollama ���С�������� `pyproject.toml` ����ĿĿ¼��ִ�У�
+
+```powershell
+uv sync --locked
+uv run --locked python-project --model qwen3:4b-instruct-2507-q4_K_M
+```
+
+����ͨ�� `http://localhost:11434` ���ӵ�ǰ�����ϵ� Ollama��`--model` �Ḳ��Ĭ�ϵ� `qwen3:1.7b`��ָ����ģ�ͱ����Ѱ�װ�ڵ�ǰ�����ϡ�
+
+��ǰ����ȴ���ʱ��Ϊ 180 �룬������������Ϊ 4096 token���ϳ��ʼ����ܳ����������ơ���������ʧ�ܻ��¼���󲢼���������һ���������ٴ����л�ӵ�һ����ʼ������ָ��λ�õľɽ�������豣���ɽ�������� `--output` ָ���µ��ļ�����
