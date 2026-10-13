@@ -1,0 +1,159 @@
+source,original_row,label,sender,receiver,date,subject,body,urls_extracted,email_text,fingerprint
+Enron,25603,0,,,,fw : tw station 2 unit 202,"- - - - - original message - - - - -
+from : spraggins , gary
+sent : friday , december 14 , 2001 3 : 14 pm
+to : mulligan , amy ; ward , linda ; giampa , micheline ; blair , lynn ; dl - ets gas controllers ; kowalke , terry
+cc : harris , steven ; watson , kimberly
+subject : tw station 2 unit 202
+monday , dec . 17 th . station 2 will take unit 202 for 32 to 36 hours to repair gear box . capacity west of thoreau will be 1060 mmbtu / d for dec . 17 th . we will determine capacity monday for the 18 th gas day .
+if you have any question give me a call .
+gary",,"Subject: fw : tw station 2 unit 202
+Sender: 
+Body:
+- - - - - original message - - - - -
+from : spraggins , gary
+sent : friday , december 14 , 2001 3 : 14 pm
+to : mulligan , amy ; ward , linda ; giampa , micheline ; blair , lynn ; dl - ets gas controllers ; kowalke , terry
+cc : harris , steven ; watson , kimberly
+subject : tw station 2 unit 202
+monday , dec . 17 th . station 2 will take unit 202 for 32 to 36 hours to repair gear box . capacity west of thoreau will be 1060 mmbtu / d for dec . 17 th . we will determine capacity monday for the 18 th gas day .
+if you have any question give me a call .
+gary",14e137090e012b5507051e7c1f53b477c9f1dd8e4be38d31b4b715e3466733ab
+Enron,21537,0,,,,power failure,"guys , your teams did a great job managing a very difficult situation with
+very few material effects to the organization . it is noticed and appreciated
+please pass on to your organization if you feel appropriate .
+regards
+delainey",,"Subject: power failure
+Sender: 
+Body:
+guys , your teams did a great job managing a very difficult situation with
+very few material effects to the organization . it is noticed and appreciated
+please pass on to your organization if you feel appropriate .
+regards
+delainey",7c94d9718fadc743ebc243ca28f468e12421352cf687ab65536e5b677db9f3d1
+SpamAssasin,789,0,Eugen Leitl <eugen@leitl.org>,"""Joseph S. Barrera III"" <joe@barrera.org>","Thu, 26 Sep 2002 16:08:14 +0200 (CEST)",Re: dumb question: X client behind a firewall?,"On Wed, 25 Sep 2002, Joseph S. Barrera III wrote:
+
+> Let's say you're behind a firewall and have a NAT address.
+> Is there any way to telnet to a linux box out there in the world
+> and set your DISPLAY in some way that you can create
+> xterms on your own screen?
+
+As other people suggested: SSH. PuTTY 
+
+	http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+
+can do it. Can run, say xclock (I'm running an X server under W32 at work,
+tunneling through a NAT box), but from Linux, not from Solaris.  Probably
+OpenSSH misconfigurat5ion.",http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html,"Subject: Re: dumb question: X client behind a firewall?
+Sender: Eugen Leitl <eugen@leitl.org>
+Body:
+On Wed, 25 Sep 2002, Joseph S. Barrera III wrote:
+
+> Let's say you're behind a firewall and have a NAT address.
+> Is there any way to telnet to a linux box out there in the world
+> and set your DISPLAY in some way that you can create
+> xterms on your own screen?
+
+As other people suggested: SSH. PuTTY 
+
+	http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+
+can do it. Can run, say xclock (I'm running an X server under W32 at work,
+tunneling through a NAT box), but from Linux, not from Solaris.  Probably
+OpenSSH misconfigurat5ion.",15740b21564dfe4bc1d739cfb6e5e3261933116e47fa4ecf4573bbaaeac9633e
+SpamAssasin,441,0,"""Bill Stoddard"" <bill@wstoddard.com>","""Fork@Xent.Com"" <fork@spamassassin.taint.org>","Thu, 5 Sep 2002 10:40:04 -0400",RE: Re[2]: Java is for kiddies,"> -----Original Message----- > From: fork-admin@xent.com [mailto:fork-admin@xent.com]On Behalf Of Karl > Anderson > Sent: Thursday, September 05, 2002 3:50 AM > To: bitbitch@magnesium.net > Cc: 'fork@spamassassin.taint.org' > Subject: Re: Re[2]: Java is for kiddies > > > bitbitch@magnesium.net writes: > > > SL>  > > SL> Misc rants about finding jobs, java vs C, what makes a good > programmer, etc. > > SL>  > >  > > SL> Okay, hmm, I thought twice about this, but what the hey, > jobs are hard to > > SL> come by. There's a company hiring in Mountain View, looking > for a few good > >  > > > > I give Adam an hour or so to come up with an adequate number of > > excuses as to why -this- job isn't worth it.  :) > > http://www.netli.com/careers/index.htm > > >* Along with your resume, please answer this question: What does > this C statement do? #define XY(s, m) (&((s *)0)->m) > > Besides provide job security? This is more useful... #define CONTAINING_RECORD(address, type, field) ((type *)( \                                                   (PCHAR)(address) - \                                                   (PCHAR)(&((type *)0)->field))) Bill",http://www.netli.com/careers/index.htm,"Subject: RE: Re[2]: Java is for kiddies
+Sender: ""Bill Stoddard"" <bill@wstoddard.com>
+Body:
+> -----Original Message----- > From: fork-admin@xent.com [mailto:fork-admin@xent.com]On Behalf Of Karl > Anderson > Sent: Thursday, September 05, 2002 3:50 AM > To: bitbitch@magnesium.net > Cc: 'fork@spamassassin.taint.org' > Subject: Re: Re[2]: Java is for kiddies > > > bitbitch@magnesium.net writes: > > > SL>  > > SL> Misc rants about finding jobs, java vs C, what makes a good > programmer, etc. > > SL>  > >  > > SL> Okay, hmm, I thought twice about this, but what the hey, > jobs are hard to > > SL> come by. There's a company hiring in Mountain View, looking > for a few good > >  > > > > I give Adam an hour or so to come up with an adequate number of > > excuses as to why -this- job isn't worth it.  :) > > http://www.netli.com/careers/index.htm > > >* Along with your resume, please answer this question: What does > this C statement do? #define XY(s, m) (&((s *)0)->m) > > Besides provide job security? This is more useful... #define CONTAINING_RECORD(address, type, field) ((type *)( \                                                   (PCHAR)(address) - \                                                   (PCHAR)(&((type *)0)->field))) Bill",558e4b7e7c9109a68c81d5ad71e049219f847e33a2ba10cb162ebb40c7a6f5e2
+Nazario_5,2132,1,"""Mail Server"" <postmaster@sodtiecc.com>",jose@monkey.org,"Tue, 18 Jul 2017 06:18:59 +0300",Authenticate Your Access to jose@monkey.org,"Hello jose@monkey.org,  Please understand that your email[jose@monkey.org]account requires user authentication to continue. due to mail violation policy.       Please click here to verify ownership.  Ignorance will cause the account to be disabled. © 2017 All rights reserved. NMLSR ID399801.  Hello jose@monkey.org, Please understand that your email[jose@monkey.org]account requires user authentication to continue.due to mail violation policy. Please click here to verify ownership. Ignorance will cause the account to be disabled.© 2017 All rights reserved. NMLSR ID399801.",,"Subject: Authenticate Your Access to jose@monkey.org
+Sender: ""Mail Server"" <postmaster@sodtiecc.com>
+Body:
+Hello jose@monkey.org,  Please understand that your email[jose@monkey.org]account requires user authentication to continue. due to mail violation policy.       Please click here to verify ownership.  Ignorance will cause the account to be disabled. © 2017 All rights reserved. NMLSR ID399801.  Hello jose@monkey.org, Please understand that your email[jose@monkey.org]account requires user authentication to continue.due to mail violation policy. Please click here to verify ownership. Ignorance will cause the account to be disabled.© 2017 All rights reserved. NMLSR ID399801.",c992e30ca72da9c5171838ec793dd06020eef99a84a63c92fd1868d093fd68fc
+Enron,21902,0,,,,audit points,"i want to make sure that we address all audit points we can during the
+implementation process for 133 . are there any points related to affiliate
+books , accrual books , hedging or policies related to that ? i know there was
+one on the affiliate or hedging policy . please send it to me and ron
+baker . thanks .",,"Subject: audit points
+Sender: 
+Body:
+i want to make sure that we address all audit points we can during the
+implementation process for 133 . are there any points related to affiliate
+books , accrual books , hedging or policies related to that ? i know there was
+one on the affiliate or hedging policy . please send it to me and ron
+baker . thanks .",45cd7482a5f69ff61b1af0b89137bc632739eec92a92b230b651c536f7ccb0ea
+Enron,22189,0,,,,dynegydirect system update,"well , looks like we are not the only ones that have problems every now and
+then ! ! ! i received a similar message this morning stating that the site was
+down .
+sheri
+- - - - - - - - - - - - - - - - - - - - - - forwarded by sheri thomas / hou / ect on 02 / 07 / 2001 01 : 30
+pm - - - - - - - - - - - - - - - - - - - - - - - - - - -
+customer . care @ dynegy . com on 02 / 07 / 2001 01 : 29 : 56 pm
+to :
+cc :
+subject : dynegydirect system update
+( embedded image moved to file : picl 9718 . gif )
+dear dynegydirect user ,
+as of 2 : 00 pm ct today , february , 7 , 2001 , the dynegydirect application will
+be unavailable . trading will resume tomorrow , february 8 , 2001 , during
+regularly scheduled hours .
+if you have any questions or concerns , please do not hesitate to contact an
+e - care analyst at the number listed below . we apologize for any
+inconvenience this may have caused .
+thank you ,
+dynegydirect e - care
+customer support
+dynegy , inc .
+ph : ( 877 ) 396 . 3493 fx : ( 877 ) 396 . 3492
+email : ecare @ dynegydirect . com
+- picl 9718 . gif",,"Subject: dynegydirect system update
+Sender: 
+Body:
+well , looks like we are not the only ones that have problems every now and
+then ! ! ! i received a similar message this morning stating that the site was
+down .
+sheri
+- - - - - - - - - - - - - - - - - - - - - - forwarded by sheri thomas / hou / ect on 02 / 07 / 2001 01 : 30
+pm - - - - - - - - - - - - - - - - - - - - - - - - - - -
+customer . care @ dynegy . com on 02 / 07 / 2001 01 : 29 : 56 pm
+to :
+cc :
+subject : dynegydirect system update
+( embedded image moved to file : picl 9718 . gif )
+dear dynegydirect user ,
+as of 2 : 00 pm ct today , february , 7 , 2001 , the dynegydirect application will
+be unavailable . trading will resume tomorrow , february 8 , 2001 , during
+regularly scheduled hours .
+if you have any questions or concerns , please do not hesitate to contact an
+e - care analyst at the number listed below . we apologize for any
+inconvenience this may have caused .
+thank you ,
+dynegydirect e - care
+customer support
+dynegy , inc .
+ph : ( 877 ) 396 . 3493 fx : ( 877 ) 396 . 3492
+email : ecare @ dynegydirect . com
+- picl 9718 . gif",495e28fd2fed2d6eb6e3ed652d1e334e13f1fbf20346760b334c7dd362d14e75
+Ling,806,0,,,,germanic syntax workshop at esslli-98,"program and call for participation for the workshop on current topics in constraint-based theories of germanic syntax saarbruecken , 17 . - 21 . august 1998 organized as part of the 10th european summer school in logic , language and information ( esslli ) by tibor kiss ( ibm germany ) and detmar meurers ( univ . tuebingen ) monday , 17 . august : tibor kiss ( ibm germany ) : introduction : empirical problems in the study of germanic syntax bob carpenter ( lucent technologies bell laboratories ) : german word order and ` ` linearization ' ' in type - logical grammar frank richter & manfred sailer ( univ . tuebingen ) : complementizers and finite verbs in german sentence structure tuesday , 18 . august : per anker jensen & peter skadhauge ( south . denmark business school ) : linearization and diathetic alternations in danish stefan mueller ( dfki gmbh ) : case in german - - an hpsg analysis detmar meurers ( univ . tuebingen ) : raising spirits ( and assigning them case ) wednesday , 19 . august : frank van eynde ( katholieke universiteit leuven ) : functional projections and dutch complementizers invited speaker : hans uszkoreit ( univ . des saarlandes / dfki gmbh ) : on the distribution of extraposed relative clauses thursday , 20 . august : jonas kuhn ( univ . stuttgart ) : resource sensitivity in the syntax - semantics interface and the german split np construction kordula de kuthy ( univ . des saarlandes ) : splitting pp arguments from nps - - an argument raising approach and its interaction with lexical semantics judith berman ( univ . stuttgart ) : on the syntax of correlative ` es ' and finite clauses in german - - an lfg analysis friday , 21 . august : adam bodomo ( univ . of hong kong ) : a lexical semantic analysis of ` faa ' complex predicates in norwegian lutz gunkel ( fu berlin ) causatives in german discussion the proceedings are available on-line at : http : / / www . sfs . nphil . uni-tuebingen . de / ~ dm / esslli98 /
+",,"Subject: germanic syntax workshop at esslli-98
+Sender: 
+Body:
+program and call for participation for the workshop on current topics in constraint-based theories of germanic syntax saarbruecken , 17 . - 21 . august 1998 organized as part of the 10th european summer school in logic , language and information ( esslli ) by tibor kiss ( ibm germany ) and detmar meurers ( univ . tuebingen ) monday , 17 . august : tibor kiss ( ibm germany ) : introduction : empirical problems in the study of germanic syntax bob carpenter ( lucent technologies bell laboratories ) : german word order and ` ` linearization ' ' in type - logical grammar frank richter & manfred sailer ( univ . tuebingen ) : complementizers and finite verbs in german sentence structure tuesday , 18 . august : per anker jensen & peter skadhauge ( south . denmark business school ) : linearization and diathetic alternations in danish stefan mueller ( dfki gmbh ) : case in german - - an hpsg analysis detmar meurers ( univ . tuebingen ) : raising spirits ( and assigning them case ) wednesday , 19 . august : frank van eynde ( katholieke universiteit leuven ) : functional projections and dutch complementizers invited speaker : hans uszkoreit ( univ . des saarlandes / dfki gmbh ) : on the distribution of extraposed relative clauses thursday , 20 . august : jonas kuhn ( univ . stuttgart ) : resource sensitivity in the syntax - semantics interface and the german split np construction kordula de kuthy ( univ . des saarlandes ) : splitting pp arguments from nps - - an argument raising approach and its interaction with lexical semantics judith berman ( univ . stuttgart ) : on the syntax of correlative ` es ' and finite clauses in german - - an lfg analysis friday , 21 . august : adam bodomo ( univ . of hong kong ) : a lexical semantic analysis of ` faa ' complex predicates in norwegian lutz gunkel ( fu berlin ) causatives in german discussion the proceedings are available on-line at : http : / / www . sfs . nphil . uni-tuebingen . de / ~ dm / esslli98 /
+",6d8681cc02191bf98d45e33342b9538a1ec7c540530455b165d80af07c700111
+SpamAssasin,1996,0,fark <rssfeeds@spamassassin.taint.org>,yyyy@spamassassin.taint.org,"Thu, 26 Sep 2002 15:29:10 -0000","Month by month, 'Most Beautiful Man' winners and their galleries. sfw","URL: http://www.newsisfree.com/click/-4,8259314,1717/
+Date: 2002-09-26T01:15:08+01:00
+
+(me)","http://www.newsisfree.com/click/-4,8259314,1717/","Subject: Month by month, 'Most Beautiful Man' winners and their galleries. sfw
+Sender: fark <rssfeeds@spamassassin.taint.org>
+Body:
+URL: http://www.newsisfree.com/click/-4,8259314,1717/
+Date: 2002-09-26T01:15:08+01:00
+
+(me)",e63e8073ebd70bcc826882a5706b2c74f9f439a0ec57c75b96c528411279d388
+Enron,6942,0,,,,meeting,"tracy ,
+confirming the meeting tomorrow , thursday , 1 : 30 p . m .
+vince kaminski",,"Subject: meeting
+Sender: 
+Body:
+tracy ,
+confirming the meeting tomorrow , thursday , 1 : 30 p . m .
+vince kaminski",e09ed1851387e1e8e836b4428732f4287b180bb5d660d1166cd591365cf3cd78
