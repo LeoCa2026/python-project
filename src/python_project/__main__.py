@@ -37,41 +37,47 @@ def save_results(path: Path, payload: dict) -> None:
 
 def save_report(path: Path, payload: dict) -> None:
     """Write a readable summary alongside the machine-readable results."""
-    labels = {0: "正常邮件", 1: "钓鱼邮件", None: "分析失败"}
+    labels = {0: "Legitimate email", 1: "Phishing email", None: "Analysis failed"}
     summary = payload["summary"]
     quote_count = sum(len(item.get("evidence", [])) for item in payload["results"])
     invalid_quote_count = summary["invalid_evidence_quotes"]
     lines = [
-        "# 本地邮件识别结果", "",
-        f"模型：{payload['model']}", "",
-        f"成功分析 {summary['successful']}/{payload['total_records']} 条；"
-        f"与数据集标签一致 {summary['correct']} 条。", "",
-        f"原文引用共 {quote_count} 条；"
-        f"其中 {invalid_quote_count} 条未通过逐字匹配检查。", "",
-        "未通过检查的引用不能作为已验证原文证据；可能涉及换行、改写或编造。", "",
-        "引用出现在原文中，也不代表它足以支持模型的判断。", "",
-        "这些邮件用于试跑，不能据此推断正式测试集上的效果。", "",
-        "| 序号 | 主题 | 模型判断 | 数据集标签 | 是否一致 |",
+        "# Local Email Classification Results", "",
+        f"Model: {payload['model']}", "",
+        "Labels: 0 = legitimate email; 1 = phishing email.", "",
+        f"Successfully analyzed {summary['successful']}/{payload['total_records']} emails; "
+        f"{summary['correct']} predictions matched the dataset labels.", "",
+        f"Evidence quotations: {quote_count}; "
+        f"{invalid_quote_count} failed the exact-match check.", "",
+        "Quotations that fail the check are not verified evidence. They may contain "
+        "formatting changes, paraphrases, or fabricated text.", "",
+        "An exact match confirms that a quotation appears in the email; it does not "
+        "establish that the quotation supports the classification.", "",
+        "These training samples are used for trial runs. The results do not establish "
+        "performance on a held-out test set.", "",
+        "Reasons are written in English. Email subjects and evidence quotations retain "
+        "their original language.", "",
+        "| Record | Subject | Model Prediction | Dataset Label | Correct |",
         "| --- | --- | --- | --- | --- |",
     ]
     for item in payload["results"]:
         subject = item["subject"].replace("|", "&#124;").replace("\n", " ")
-        match = "是" if item["correct"] is True else "否" if item["correct"] is False else "失败"
+        match = "Yes" if item["correct"] is True else "No" if item["correct"] is False else "Failed"
         lines.append(
             f"| {item['row']} | {subject} | {labels[item['predicted_label']]} | "
             f"{labels[item['true_label']]} | {match} |"
         )
     for item in payload["results"]:
-        lines.extend(["", f"## 第 {item['row']} 条", ""])
+        lines.extend(["", f"## Record {item['row']}", ""])
         if item["status"] != "ok":
-            lines.append("分析失败：" + item["error"])
+            lines.append("Analysis failed: " + item["error"])
             continue
-        lines.extend(["判断：" + labels[item["predicted_label"]], "", "理由：" + item["reason"], ""])
+        lines.extend(["Prediction: " + labels[item["predicted_label"]], "", "Reason: " + item["reason"], ""])
         if not item["evidence"]:
-            lines.append("模型没有提供原文引用。")
+            lines.append("The model provided no evidence quotations.")
         for quote in item["evidence"]:
-            found = "能在原文中逐字找到" if quote["found_in_email"] else "未能在原文中逐字找到"
-            lines.extend(["原文证据（" + found + "）：", ""])
+            found = "exact match found in the email" if quote["found_in_email"] else "no exact match found in the email"
+            lines.extend(["Evidence (" + found + "):", ""])
             lines.extend("    " + line for line in quote["quote"].splitlines())
             lines.append("")
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -79,8 +85,8 @@ def save_report(path: Path, payload: dict) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Analyze CSV emails with local Ollama.")
-    parser.add_argument("--input", type=Path, default=PROJECT_ROOT / "data/raw/train.csv")
-    parser.add_argument("--output", type=Path, default=PROJECT_ROOT / "outputs/train_results.json")
+    parser.add_argument("--input", type=Path, default=PROJECT_ROOT / "data/raw/train1.csv")
+    parser.add_argument("--output", type=Path, default=PROJECT_ROOT / "outputs/train1_results.json")
     parser.add_argument("--model", default="qwen3:1.7b")
     args = parser.parse_args()
     if args.output.resolve() == args.input.resolve():

@@ -22,7 +22,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ## 快速开始
 
-程序默认分析完整的 `data/raw/train.csv`。该文件未上传到 GitHub，下载或克隆代码后，需要先从原电脑复制到这个位置。仓库包含 `train2.csv`（100 条记录），可以用 `--input` 指定它进行小规模试跑。
+程序默认分析 `data/raw/train1.csv`（10 条记录），该文件已包含在仓库中。完整的 `train.csv` 仅保留在本地，如需分析它，可用 `--input data/raw/train.csv --output outputs/train_results.json` 指定输入和输出。
 
 ```bash
 git clone https://github.com/LeoCa2026/python-project.git
@@ -31,7 +31,7 @@ uv sync --locked
 uv run --locked python-project
 ```
 
-运行前保持 Ollama 运行，并安装 `qwen3:1.7b`。程序默认使用这个模型，读取 `data/raw/train.csv`，逐条显示识别进度，将结果保存到 `outputs/train_results.json`，并生成易读的 `outputs/train_results.md` 报告。
+运行前保持 Ollama 运行，并安装 `qwen3:1.7b`。程序默认使用这个模型，读取 `data/raw/train1.csv`，逐条显示识别进度，将结果保存到 `outputs/train1_results.json`，并生成易读的 `outputs/train1_results.md` 报告。
 
 也可以按模块运行：
 
@@ -117,14 +117,22 @@ python-project/
 - `test.csv`
 - `README.txt`（数据集说明）
 
-完整的 `train.csv` 是程序的默认输入，仅保留在本地，未上传到 GitHub。运行默认命令前请将它放入 `data/raw/`。
+完整的 `train.csv` 仅保留在本地，未上传到 GitHub。程序默认使用仓库中的 `train1.csv`。
 
 `.gitkeep` 用于让 Git 保留目录，不影响数据读取。
 保留原始数据；后续处理后的数据可另存到 `data/processed/`。
 
 ## 本地邮件识别试跑
 
-`detector.py` 只把 `email_text` 发给本机模型；`label` 只用于核对结果。模型输出判断（0=正常，1=钓鱼）、中文理由和原文引用。程序检查引用是否逐字出现在输入邮件中，这项检查不代表证据一定能支持判断。
+`detector.py` 只把 `email_text` 发给本机模型；`label` 只用于核对结果。模型输出判断（0=正常，1=钓鱼）、英文理由和原文引用。JSON 字段名、保存的系统提示词以及 Markdown 报告的标题、字段说明和状态文字使用英文。邮件主题和证据引用保留原文语言，不进行翻译。程序检查引用是否逐字出现在输入邮件中，这项检查不代表证据一定能支持判断。
+
+此设置只影响之后生成的结果，之前的中文报告不会自动转换。需要保留旧结果时，可以指定新的输出路径：
+
+```powershell
+uv run --locked python-project --output outputs/train1_results_en.json
+```
+
+完成后会同时生成 `outputs/train1_results_en.md` 英文报告。
 
 默认运行：
 
@@ -142,7 +150,7 @@ uv run --locked python-project --input data/raw/train2.csv --output outputs/trai
 
 ## 在安装 4B Instruct 模型的新电脑上运行
 
-先把完整版 `train.csv` 放入 `data/raw/`，并保持本机 Ollama 运行。进入包含 `pyproject.toml` 的项目目录后执行：
+确认 `data/raw/train1.csv` 存在，并保持本机 Ollama 运行。进入包含 `pyproject.toml` 的项目目录后执行：
 
 ```powershell
 uv sync --locked
